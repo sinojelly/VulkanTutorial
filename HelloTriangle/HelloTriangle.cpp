@@ -106,6 +106,7 @@ private:
 		createImageViews();
 		createRenderPass();
 		createGraphicsPipeline();
+		createFramebuffers();
 	}
 
 	void createInstance() {
@@ -208,7 +209,7 @@ private:
 	std::vector<VDeleter<VkImageView>> swapChainImageViews;
 	VDeleter<VkRenderPass> renderPass{ device, vkDestroyRenderPass };
 	VDeleter<VkPipeline> graphicsPipeline{ device, vkDestroyPipeline };
-
+	std::vector<VDeleter<VkFramebuffer>> swapChainFramebuffers;
 
 
 	bool checkValidationLayerSupport() {
@@ -849,6 +850,29 @@ private:
 
 		if (vkCreateRenderPass(device, &renderPassInfo, nullptr, renderPass.replace()) != VK_SUCCESS) {
 			throw std::runtime_error("failed to create render pass!");
+		}
+	}
+
+	void createFramebuffers() {
+		swapChainFramebuffers.resize(swapChainImageViews.size(), VDeleter<VkFramebuffer>{device, vkDestroyFramebuffer});
+
+		for (size_t i = 0; i < swapChainImageViews.size(); i++) {
+			VkImageView attachments[] = {
+				swapChainImageViews[i]
+			};
+
+			VkFramebufferCreateInfo framebufferInfo = {};
+			framebufferInfo.sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO;
+			framebufferInfo.renderPass = renderPass;
+			framebufferInfo.attachmentCount = 1;
+			framebufferInfo.pAttachments = attachments;
+			framebufferInfo.width = swapChainExtent.width;
+			framebufferInfo.height = swapChainExtent.height;
+			framebufferInfo.layers = 1;
+
+			if (vkCreateFramebuffer(device, &framebufferInfo, nullptr, swapChainFramebuffers[i].replace()) != VK_SUCCESS) {
+				throw std::runtime_error("failed to create framebuffer!");
+			}
 		}
 	}
 };
