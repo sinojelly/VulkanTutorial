@@ -72,7 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\VulkanSDK\1.0.46.0\Include;D:\VulkanSDK\Library\glm;D:\VulkanSDK\Library\glfw-3.2.1.bin.WIN32\include;$(IncludePath)</IncludePath>
+    <IncludePath>D:\VulkanSDK\Library\stb;D:\VulkanSDK\1.0.46.0\Include;D:\VulkanSDK\Library\glm;D:\VulkanSDK\Library\glfw-3.2.1.bin.WIN32\include;$(IncludePath)</IncludePath>
     <LibraryPath>D:\VulkanSDK\1.0.46.0\Lib32;D:\VulkanSDK\Library\glfw-3.2.1.bin.WIN32\lib-vc2015;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -80,7 +80,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>D:\VulkanSDK\1.0.46.0\Include;D:\VulkanSDK\Library\glm;D:\VulkanSDK\Library\glfw-3.2.1.bin.WIN32\include;$(IncludePath)</IncludePath>
+    <IncludePath>D:\VulkanSDK\Library\stb;D:\VulkanSDK\1.0.46.0\Include;D:\VulkanSDK\Library\glm;D:\VulkanSDK\Library\glfw-3.2.1.bin.WIN32\include;$(IncludePath)</IncludePath>
     <LibraryPath>D:\VulkanSDK\1.0.46.0\Lib32;D:\VulkanSDK\Library\glfw-3.2.1.bin.WIN32\lib-vc2015;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
